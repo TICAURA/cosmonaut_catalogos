@@ -49,6 +49,7 @@ public class CatBasePeriodoController {
             return HttpResponse.badRequest(Utilidades.respuestaError());
         }
     }
+	
 
     @Operation(summary = "${cosmonaut.controller.catBasePeriodo.findByEsActivo.resumen}",
             description = "${cosmonaut.controller.catBasePeriodo.findByEsActivo.descripcion}",

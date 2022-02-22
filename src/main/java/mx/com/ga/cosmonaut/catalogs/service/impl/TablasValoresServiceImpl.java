@@ -60,7 +60,7 @@ public class TablasValoresServiceImpl implements TablasValoresService {
         try {
             RespuestaGenerica respuesta = new RespuestaGenerica();
             List<CatValorReferencia> valores = catValorReferenciaRepository
-                    .findByEsActivoOrderByValorReferenciaId(activo);
+                    .findByEsActivoAndAnioLeyAnioLeyOrderByValorReferenciaId(activo, anio);
 
             for (CatValorReferencia valor : valores) {
                 catAnioFiscalRepository.findById(valor.getAnioLey().getAnioLey()).ifPresent(valor::setAnioLey);

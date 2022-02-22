@@ -20,6 +20,7 @@ public class CatDelegacionSubdelegacionController {
 
     @Inject
     private CatDelegacionSubdelegacionService catDelegacionSubdelegacionService;
+	
 
     @Operation(summary = "${cosmonaut.controller.delegacionSubdelegacion.findByEsActivo.resumen}",
             description = "${cosmonaut.controller.delegacionSubdelegacion.findByEsActivo.descripcion}",
