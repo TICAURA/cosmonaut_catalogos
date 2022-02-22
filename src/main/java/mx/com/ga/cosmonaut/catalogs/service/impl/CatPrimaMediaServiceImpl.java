@@ -1,0 +1,31 @@
+package mx.com.ga.cosmonaut.catalogs.service.impl;
+
+import mx.com.ga.cosmonaut.catalogs.service.CatPrimaMediaService;
+import mx.com.ga.cosmonaut.common.dto.RespuestaGenerica;
+import mx.com.ga.cosmonaut.common.exception.ServiceException;
+import mx.com.ga.cosmonaut.common.repository.catalogo.negocio.CatPrimaMediaRepository;
+import mx.com.ga.cosmonaut.common.util.Constantes;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
+public class CatPrimaMediaServiceImpl implements CatPrimaMediaService {
+
+    @Inject
+    private CatPrimaMediaRepository catPrimaMediaRepository;
+    private RespuestaGenerica respuestaGenerica = new RespuestaGenerica();
+
+    @Override
+    public RespuestaGenerica findByEsActivo(Boolean activo) throws ServiceException{
+        try {
+            respuestaGenerica.setDatos(catPrimaMediaRepository.findByEsActivoOrderByDescripcion(activo));
+            respuestaGenerica.setMensaje(Constantes.EXITO);
+            respuestaGenerica.setResultado(Constantes.RESULTADO_EXITO);
+            return respuestaGenerica;
+        } catch (Exception e) {
+            throw new ServiceException(Constantes.ERROR_CLASE + this.getClass().getSimpleName()
+                    + Constantes.ERROR_METODO + " findByEsActivo " + Constantes.ERROR_EXCEPCION, e);
+        }
+    }
+}
